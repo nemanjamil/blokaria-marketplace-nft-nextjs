@@ -5,6 +5,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
     './src/app/**/*.{js,ts,jsx,tsx}',
   ],
+  //darkMode: media, // or 'media' or 'class'
   theme: {
     extend: {
       backgroundImage: {
@@ -13,6 +14,17 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    // extend: {
+    //   maxWidth: {
+    //     "8xl": "1920px"
+    //   },
+    // },
+  },
+  variants: {
+    extend: {
+      opacity: ["disabled"],
+      cursor: ["disabled"]
+    }
   },
   plugins: [],
 }
