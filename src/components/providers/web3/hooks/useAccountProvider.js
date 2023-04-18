@@ -18,7 +18,6 @@ export const handler = (web3, provider) => () => {
 
         })
 
-
     // ovo smo zamenili sa swrResponse
     // useEffect((() => {
     //     const getAccount = async () => {
@@ -54,7 +53,6 @@ export const handler = (web3, provider) => () => {
     if (data) {
         console.log('web3.utils.keccak256(data)', web3.utils.keccak256(data));
     }
-
 
     return {
         account: {
