@@ -8,26 +8,22 @@ import { useAccountHook } from "@/components/hooks/web3/useAccount" // ovo je ho
 
 export default function Navbar() {
 
-    const { connect, isLoading, isWeb3Loaded, web3, hooks } = useWeb3()  // web3(Code_1), hooks(Code_2)
+    const { connect, isLoading, isWeb3Loaded, web3, hooksMiki } = useWeb3()  // web3(Code_1), hooks(Code_2)
 
     // Code_1
     const _useAccountProvider = useAccountProvider(web3);
-    console.log('_useAccountProvider', _useAccountProvider);
     const { accountProvider } = _useAccountProvider();
-    console.log('accountProvider', accountProvider);
 
     // Code_2
-    const { accountProviderHook } = hooks.getAccountHookV2();
-    console.log('accountProviderHook', accountProviderHook);
+    const { accountProviderHook } = hooksMiki.getAccountHookV2();
 
     // Code_3
     const { account } = useAccountHook();
-    console.log('account', account);
+
 
     const { pathname } = useRouter();
     const router = useRouter();
-    console.log('isLoading', isLoading);
-    console.log('isWeb3Loaded', isWeb3Loaded);
+
 
 
     return (

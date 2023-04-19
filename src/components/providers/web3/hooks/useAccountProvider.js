@@ -50,10 +50,6 @@ export const handler = (web3, provider) => () => {
     //         })
     // }, [provider])
 
-    if (data) {
-        console.log('web3.utils.keccak256(data)', web3.utils.keccak256(data));
-    }
-
     return {
         account: {
             data,
