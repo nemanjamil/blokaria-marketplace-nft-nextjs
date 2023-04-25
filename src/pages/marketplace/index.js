@@ -14,7 +14,7 @@ const Marketplace = ({ courses }) => {
 
     const [selectedCourse, setSelectedCourse] = useState(null)
     const { account } = useAccountHook();
-    const { ownedCourses } = useUserCoursesHook();
+    let ownedCourses = useUserCoursesHook(courses, account);
 
     console.log('ownedCourses', ownedCourses);
 
@@ -47,7 +47,6 @@ const Marketplace = ({ courses }) => {
         <>
             <div className="py-4">
                 <MarketHeader />
-
             </div>
             <CourseList
                 courses={courses}

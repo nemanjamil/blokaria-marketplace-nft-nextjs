@@ -1,10 +1,15 @@
 import { useHooks } from "@/components/providers/web3";
-//  useHooks calls setupHooks
-//  setupHooks(web3, provider) => {userAccount, getNetwork}
-//  getUserCourses import getUserCoursesHook
+// 1. useHooks pozova setupHooks sa parametrima { web3, provider, contract } koji storuje variable { getNetwork, getUserCourses, useAccount }
+// 2. setupHooks({ web3, provider, contract })
+// 3. setupHooks ima vrednosti { getNetwork, getUserCourses, useAccount }
+// 4. hooks poziva jednu od varijabli getUserCourses
 
-export const useUserCoursesHook = () => {
+export const useUserCoursesHook = (...args) => {
     return useHooks((hooks) => {
-        return hooks.getUserCourses()
+        // console.log('hooks', hooks);
+        // getNetwork
+        // getUserCourses
+        // useAccount
+        return hooks.getUserCourses(...args)
     })
 }

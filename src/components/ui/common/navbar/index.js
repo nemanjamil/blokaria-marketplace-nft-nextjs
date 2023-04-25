@@ -71,11 +71,11 @@ export default function Navbar() {
                 </div>
             </div>}
 
-            <div>
+            {/* <div>
                 <div>accountProvider Code_1: {accountProvider}</div>
                 <div>accountProvider Code_2: {accountProviderHook}</div>
                 <div>account Code_3: {account.data}</div>
-            </div>
+            </div> */}
         </section>
     )
 }

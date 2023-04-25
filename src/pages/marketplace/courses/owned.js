@@ -5,12 +5,14 @@ import { OwnedCourseCard } from "@/components/ui/course";
 import { BaseLayout } from "@/components/ui/layout";
 import { MarketHeader } from "@/components/ui/marketplace";
 import { useUserCoursesHook } from "@/components/hooks/web3/useUserCoursesHook";
+import { useAccountHook } from "@/components/hooks/web3/useAccount";
+import { getAllCourses } from "@/content/courses/fetcher";
 
-export default function OwnedCourses() {
+export default function OwnedCourses({ courses }) {
 
-    const { ownedCourses } = useUserCoursesHook();
-    console.log('OwnedCourses-sss', ownedCourses);
+    const { account } = useAccountHook();
 
+    let ownedCourses = useUserCoursesHook(courses, account);
 
     return (
         <>
@@ -18,17 +20,32 @@ export default function OwnedCourses() {
                 <MarketHeader />
             </div>
             <section className="grid grid-cols-1">
-                <OwnedCourseCard>
-                    <Message>
-                        My custom message!
-                    </Message>
-                    <Button>
-                        Watch the course
-                    </Button>
-                </OwnedCourseCard>
+                {
+                    ownedCourses && ownedCourses?.data?.length && ownedCourses.data.map((course, i) => {
+                        return (<OwnedCourseCard key={course.id} course={course}>
+                            {/* <Message>
+                                My custom message!
+                            </Message> */}
+                            <Button>
+                                Watch the course
+                            </Button>
+                        </OwnedCourseCard>);
+                    }
+                    )
+                }
+
             </section>
         </>
     )
+}
+
+export function getStaticProps() {
+    const { data } = getAllCourses()
+    return {
+        props: {
+            courses: data
+        }
+    }
 }
 
 OwnedCourses.Layout = BaseLayout
